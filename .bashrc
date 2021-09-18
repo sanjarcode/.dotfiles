@@ -177,3 +177,4 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+Changed from anaconda3 to .anaconda3, hidden is better.
