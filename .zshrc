@@ -21,7 +21,31 @@ fi
 # gitify_prompt()
 eval "$(pyenv init -)"
 
-PS1='%B%F{green}%n%f%b$%F{red}%~%f ' # for colored prompt
+#postgreSQL
+export PATH="/Applications/Postgres.app/Contents/Versions/13/bin:$PATH"
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+custom_prompt
+
+eval "$(rbenv init -)" # rbenv, added manually
+
+if type brew &>/dev/null; then
+    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+    autoload -Uz compinit
+fi
+
+# Added after Rosetta 2 install
+
+# alias rbrew='/usr/local/bin/brew'
+# # Rosetta brew
+# % which rbrew
+alias rbrew="/usr/local/bin/brew"
+# # Native brew
+# % which brew
+# /opt/homebrew/bin/brew
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
+export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH" # for brew path $
+# https://stackoverflow.com/q/12861422 --> https://stackoverflow.com/a/11$
+
+export HOMEBREW_NO_AUTO_UPDATE=1 # disable auto update on each run of brew
