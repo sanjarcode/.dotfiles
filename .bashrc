@@ -116,67 +116,22 @@ if ! shopt -oq posix; then
   fi
 fi
 
-
-## Only PATH and other locatory stuff is explicit. Everything else is defined in ~/.bash_aliases, but called from here.
-
-# #android and flutter
-# export PATH="$PATH:/home/sanjar/snap/flutter_dev/flutter/bin"
-# export PATH="$PATH:/usr/local/lib/Android/Sdk"
-# export PATH="$PATH:/usr/local/lib/Android/Sdk/platform-tools"
-
-# #pyenv
-export PATH="/home/sanjar/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
-#added  ~/.my_scripts/ contents to path
-PATH="/home/sanjar/.my_scripts:$PATH"
-export PATH
-
-# for NVM
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# # for golang, see https://golang.org/doc/install
-# # export PATH=$PATH:/usr/local/go/bin
-# export GOROOT=/usr/lib/go
-# export GOPATH=$HOME/go
-# export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+# Added by pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
+# Restart your shell for the changes to take effect.
 
-# for asdf - single tool for managing enviroment of any language
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
+# Load pyenv-virtualenv automatically by adding
+# the following to ~/.bashrc:
+
+eval "$(pyenv virtualenv-init -)"
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
 
 gitify_prompt # colorizes the prompt
-
-## NOTE:
-# This may not be fully operational - A great blunder happened on 22 Dec 2020
-# I accidently cleared the .bashrc file
-# This file was created from two files
-# 1. Lower part, after "shortened prompt" -  .bashrc had been partly copied to Ahmar's machine, for udacity custom prompt. - So it is up to date until atleast 9 Dec 2020
-# 2. Upper part, before "shortedned prompt" - from Dropbox(where I had saved a .bashrc) - 23 Sept 2020
-
-# Activities done between these time
-# Install golang - done just after 16 Dec
-
-# Update - I think the file is fine, since Ahmar's bashrc had android, flutter and NVM settings too, which are very old(Aug 2020)
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/sanjar/.anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/sanjar/.anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/sanjar/.anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/sanjar/.anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-# Changed from anaconda3 to .anaconda3, hidden is better.
-
