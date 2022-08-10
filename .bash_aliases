@@ -2,6 +2,13 @@
 
 # CUSTOM Aliases #####################
 
+# git
+alias gco="git checkout "
+alias ga="git add "
+alias gcan="git commit --amend --no-edit"
+alias gcm="git commit -m "
+alias gst="git status"
+
 # flip, wait till it completes. Open notebook. Flip without waiting. Close the terminal window(Does not close the kernel).
 alias pyflip='pyenv versions | grep "3" | xargs -I {} pyenv global {} > /dev/null 2>&1'
 
@@ -164,3 +171,15 @@ $ $reset"
         clear                  #for background artifacting
     fi
 }
+
+# To use the Heroku CLI's autocomplete --
+#   Via homebrew's shell completion:
+#     1) Follow homebrew's install instructions https://docs.brew.sh/Shell-Completion
+#         NOTE: For zsh, as the instructions mention, be sure compinit is autoloaded
+#               and called, either explicitly or via a framework like oh-my-zsh.
+#     2) Then run
+#       $ heroku autocomplete --refresh-cache
+#   OR
+#   Use our standalone setup:
+#     1) Run and follow the install steps:
+#       $ heroku autocomplete
