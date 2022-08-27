@@ -116,22 +116,28 @@ if ! shopt -oq posix; then
   fi
 fi
 
+
+### dev stuff
+
+## nvm, node
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# Added by pyenv
+## pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-# Restart your shell for the changes to take effect.
-
 # Load pyenv-virtualenv automatically by adding
-# the following to ~/.bashrc:
-
 eval "$(pyenv virtualenv-init -)"
+
+## rbenv, ruby
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
-gitify_prompt # colorizes the prompt
+
+### custom stuff
+
+# git
+gitify_prompt
