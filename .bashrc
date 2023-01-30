@@ -145,7 +145,12 @@ gitify_prompt
 # copy and paste - xclip/pb*
 copyAndPaste
 
-# pnpm
+# pnpm start
 export PNPM_HOME="/home/sanjar/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
+
+# AndroidStudio \w React Native setup docs
+export ANDROID_SDK_ROOT=$HOME/.devTools/Android/Sdk
+export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
+export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
