@@ -5,6 +5,18 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# global node modules - added by me
+if [ -n "$NVM_BIN" ]; then
+    export NODE_PATH="${NVM_BIN/bin/lib/node_modules}"
+    export PATH="$PATH:$NODE_PATH"
+else
+    ___MYNODEPATH=$(npm root -g 2> /dev/null)
+    if [ -n "___MYNODEPATH" ]; then
+        export NODE_PATH=$___MYNODEPATH
+        export PATH="$PATH:$NODE_PATH"
+    fi
+fi
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.zsh_aliases, instead of adding them here directly.
