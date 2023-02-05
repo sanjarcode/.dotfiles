@@ -31,9 +31,6 @@ alias youtube-dl='youtube-dl -i --write-sub --write-auto-sub --sub-lang en --emb
 # write stylus app
 alias Write="/opt/not_installed/write300/Write/Write"
 
-#alias for textshot - ianzhao, OCR copy
-alias textshot="/opt/not_installed/textshot/textshot.py"
-
 #alias for simple mysql interpreter
 alias mysqli='mycli -u sanjarPractice -ppassword'
 
