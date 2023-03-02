@@ -42,6 +42,45 @@ alias l="lifelogger"
 
 # CUSTOM Functions #####################
 
+# print (-s option) or navigate to Git repo root, current location or specified one
+function groot {
+    local show=
+    local path=
+
+    # Parse command line options
+    while [[ $# -gt 0 ]]; do
+        case "$1" in
+            -s)
+                show=true
+                shift
+                ;;
+            *)
+                path="$1"
+                shift
+                ;;
+        esac
+    done
+
+    # If no path is specified, use the current directory
+    if [[ -z "$path" ]]; then
+        path="."
+    fi
+
+    # Get the Git root directory and either change to it or print it
+    local dir="$(cd "$path" && git rev-parse --show-toplevel 2>/dev/null)"
+    if [[ -n "$dir" ]]; then
+        dir="$(echo "$dir" | tr -d '\n')"
+        if [[ -n "$show" ]]; then
+            echo "$dir"
+        else
+            cd "$dir" || return
+        fi
+    else
+        echo "Not inside a Git repository" >&2
+        return 1
+    fi
+}
+
 function diskclear() {
     echo unfinished
     # snap list | awk '{print $1 " " $3}' | while read -r line; do
