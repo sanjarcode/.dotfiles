@@ -81,6 +81,31 @@ function groot {
     fi
 }
 
+# print random human-friendly name
+function namegen {
+    jsCode=$(cat <<-ENDJS
+        const {
+            uniqueNamesGenerator,
+            adjectives,
+            colors,
+            animals
+        } = require('unique-names-generator');
+
+        const output = uniqueNamesGenerator({
+            dictionaries: [adjectives, colors, animals],
+            separator: '-'
+        });
+
+        console.log(output);
+ENDJS
+)
+    node -e "$jsCode"
+
+    # npm package - https://www.npmjs.com/package/unique-names-generator#user-content-usage
+    # multiline bash - "here document" (chatGPT) - https://chat.openai.com/chat/21ad89f6-231f-4f92-8256-52c0f652fdcb
+    # node -e "some js code" option is available
+}
+
 function diskclear() {
     echo unfinished
     # snap list | awk '{print $1 " " $3}' | while read -r line; do
