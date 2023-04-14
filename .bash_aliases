@@ -273,3 +273,8 @@ function copyAndPaste() {
 function portkill() {
     fuser -k "$1/tcp"
 }
+
+# print total number of lines in files at path and all descendants
+function countLines() {
+    find "$1" -type f -exec wc -l {} + | awk '{total += $1} END{print total}'
+}
