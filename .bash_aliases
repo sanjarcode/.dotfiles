@@ -267,3 +267,9 @@ function copyAndPaste() {
     #     return
     # fi
 }
+
+# kills process at port
+# Usage: `portkill 3000`
+function portkill() {
+    fuser -k "$1/tcp"
+}

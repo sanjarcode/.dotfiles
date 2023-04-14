@@ -132,3 +132,9 @@ ENDJS
     # multiline bash - "here document" (chatGPT) - https://chat.openai.com/chat/21ad89f6-231f-4f92-8256-52c0f652fdcb
     # node -e "some js code" option is available
 }
+
+# kills process at port
+# Usage: `portkill 3000`
+function portkill() {
+    fuser -k "$1/tcp"
+}
