@@ -62,7 +62,7 @@ $ $reset"
 
 alias -g gco="git checkout "
 alias -g ga="git add "
-alias gunadd="git restore --staged"
+alias gunadd="git restore --staged" # Unstage path1 path2...
 alias -g gcan="git commit --amend --no-edit"
 alias -g gcm="git commit -m "
 alias -g gst="git status"
