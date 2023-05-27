@@ -1,64 +1,4 @@
-function custom_prompt()
-{
-    export GIT_PS1_SHOWDIRTYSTATE=1
-    PS1='%B%F{green}sanjar%f%b$%F{red} %c%f '
-
-    # if [[ "${USERNAME}" == "muhammadsanjar"]] then
-    #     PS1='%B%F{green}sanjar%f%b$%F{red}%~%f '
-    # else
-    #     # use $USERNAME
-    #     PS1='%B%F{green}%n%f%b$%F{red}%~%f '
-    # fi
-}
-
-# gitify prompt, taken from the Udacity Git course
-function gitify_prompt() {
-    red="\[\033[38;5;203m\]"
-    green="\[\033[38;05;38m\]"
-    blue="\[\033[0;34m\]"
-    reset="\[\033[0m\]"
-
-    export GIT_PS1_SHOWDIRTYSTATE=1
-
-    # '\u' adds the name of the current user to the prompt
-    # '\$(__git_ps1)' adds git-related stuff
-    # '\W' adds the name of the current directory
-    export PS1="$red\u$green\ $(__git_ps1)$blue \W
-$ $reset"
-
-    # Changes colors for tty consoles
-    if [ "$TERM" = "xterm-256color" ]; then
-        echo -en "\e]P0232323" #black
-        echo -en "\e]P82B2B2B" #darkgrey
-        echo -en "\e]P1D75F5F" #darkred
-        echo -en "\e]P9E33636" #red
-        echo -en "\e]P287AF5F" #darkgreen
-        echo -en "\e]PA98E34D" #green
-        echo -en "\e]P3D7AF87" #brown
-        echo -en "\e]PBFFD75F" #yellow
-        echo -en "\e]P48787AF" #darkblue
-        echo -en "\e]PC7373C9" #blue
-        echo -en "\e]P5BD53A5" #darkmagenta
-        echo -en "\e]PDD633B2" #magenta
-        echo -en "\e]P65FAFAF" #darkcyan
-        echo -en "\e]PE44C9C9" #cyan
-        echo -en "\e]P7E5E5E5" #lightgrey
-        echo -en "\e]PFFFFFFF" #white
-        clear                  #for background artifacting
-    fi
-}
-
-# To use the Heroku CLI's autocomplete --
-#   Via homebrew's shell completion:
-#     1) Follow homebrew's install instructions https://docs.brew.sh/Shell-Completion
-#         NOTE: For zsh, as the instructions mention, be sure compinit is autoloaded
-#               and called, either explicitly or via a framework like oh-my-zsh.
-#     2) Then run
-#       $ heroku autocomplete --refresh-cache
-#   OR
-#   Use our standalone setup:
-#     1) Run and follow the install steps:
-#       $ heroku autocomplete
+# CUSTOM Aliases #####################
 
 # git
 alias gco="git checkout"
@@ -71,6 +11,8 @@ alias gst="git status"
 # gh - GitHub CLI
 alias ghcc='gh browse $(git rev-parse HEAD) -cn | tr -d "\n"' # get "commit" link instead of "tree" link.
 # See: https://github.com/cli/cli/issues/6926. Also using single quotes here.
+
+# CUSTOM Functions #####################
 
 # print (-s option) or navigate to Git repo root, current location or specified one
 function groot {
@@ -134,6 +76,127 @@ ENDJS
     # npm package - https://www.npmjs.com/package/unique-names-generator#user-content-usage
     # multiline bash - "here document" (chatGPT) - https://chat.openai.com/chat/21ad89f6-231f-4f92-8256-52c0f652fdcb
     # node -e "some js code" option is available
+}
+
+function slow() {
+    # default waiting time
+    wait_time=0.5
+    if [ "$1" -lt 5 ]; then
+        wait_time="$1"
+        return
+    fi
+    # if [ "$2" != '' ]; then
+    #     $wait_time=$2
+    # fi
+
+    # do the work using awk
+    "$@" | awk '{system("sleep '$wait_time'");print}'
+}
+
+function youtube-dl-numbered() {
+    # runs the alias
+    youtube-dl -cio "%(playlist_index)02d: %(title)s.%(ext)s" --write-sub --write-auto-sub --sub-lang en --embed-subs "$@"
+}
+
+function reposize() {
+    # https://webapps.stackexchange.com/questions/39587/view-estimated-size-of-github-repository-before-cloning
+    printf "$1" | perl -ne 'print $1 if m!([^/]+/[^/]+?)(?:\.git)?$!' | xargs -i curl -s -k https://api.github.com/repos/'{}' | grep size | tr -d -c 0-9 | awk '{printf $1/1024}'
+    echo " MB"
+}
+
+#advanced grep - works for images and pdfs too
+function advgrep() {
+    grep "$1" -ri -I # text files
+    pdfgrep "$1" -ri # PDFs
+
+    # images
+    GRAY='\033[1;32m'
+    NC='\033[0m' # No Color
+    for file in $(find . -name '*.*g'); do
+        tesseract "$file" stdout 2>/dev/null | grep "$1" -i && echo -e "${GRAY}$file${NC}\n"
+    done
+}
+
+function custom_prompt()
+{
+    export GIT_PS1_SHOWDIRTYSTATE=1
+    PS1='%B%F{green}sanjar%f%b$%F{red} %c%f '
+
+    # if [[ "${USERNAME}" == "muhammadsanjar"]] then
+    #     PS1='%B%F{green}sanjar%f%b$%F{red}%~%f '
+    # else
+    #     # use $USERNAME
+    #     PS1='%B%F{green}%n%f%b$%F{red}%~%f '
+    # fi
+}
+
+# gitify prompt, taken from the Udacity Git course
+function gitify_prompt() {
+    red="\[\033[38;5;203m\]"
+    green="\[\033[38;05;38m\]"
+    blue="\[\033[0;34m\]"
+    reset="\[\033[0m\]"
+
+    export GIT_PS1_SHOWDIRTYSTATE=1
+
+    # '\u' adds the name of the current user to the prompt
+    # '\$(__git_ps1)' adds git-related stuff
+    # '\W' adds the name of the current directory
+    export PS1="$red\u$green\ $(__git_ps1)$blue \W
+$ $reset"
+
+    # Changes colors for tty consoles
+    if [ "$TERM" = "xterm-256color" ]; then
+        echo -en "\e]P0232323" #black
+        echo -en "\e]P82B2B2B" #darkgrey
+        echo -en "\e]P1D75F5F" #darkred
+        echo -en "\e]P9E33636" #red
+        echo -en "\e]P287AF5F" #darkgreen
+        echo -en "\e]PA98E34D" #green
+        echo -en "\e]P3D7AF87" #brown
+        echo -en "\e]PBFFD75F" #yellow
+        echo -en "\e]P48787AF" #darkblue
+        echo -en "\e]PC7373C9" #blue
+        echo -en "\e]P5BD53A5" #darkmagenta
+        echo -en "\e]PDD633B2" #magenta
+        echo -en "\e]P65FAFAF" #darkcyan
+        echo -en "\e]PE44C9C9" #cyan
+        echo -en "\e]P7E5E5E5" #lightgrey
+        echo -en "\e]PFFFFFFF" #white
+        clear                  #for background artifacting
+    fi
+}
+
+# To use the Heroku CLI's autocomplete --
+#   Via homebrew's shell completion:
+#     1) Follow homebrew's install instructions https://docs.brew.sh/Shell-Completion
+#         NOTE: For zsh, as the instructions mention, be sure compinit is autoloaded
+#               and called, either explicitly or via a framework like oh-my-zsh.
+#     2) Then run
+#       $ heroku autocomplete --refresh-cache
+#   OR
+#   Use our standalone setup:
+#     1) Run and follow the install steps:
+#       $ heroku autocomplete
+
+# FIXME: rewrite for mac, this is copied from Linux
+# CLI clipboard copy, paste
+function copyAndPaste() {
+    if command -v xclip &> /dev/null
+    then
+        alias c="xclip -selection clipboard"
+        alias v="xclip -o -selection clipboard"
+        # echo "xclip exists"
+        return
+    fi
+
+    # if command -v pbcopy &> /dev/null
+    # then
+    #     alias c="cat | pbcopy"
+    #     alias p="pbpaste"
+    #     # echo "pbcopy exists"
+    #     return
+    # fi
 }
 
 # kill process at port

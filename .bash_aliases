@@ -107,18 +107,6 @@ ENDJS
     # node -e "some js code" option is available
 }
 
-function diskclear() {
-    echo unfinished
-    # snap list | awk '{print $1 " " $3}' | while read -r line; do
-    #     # apprev=( $line )
-    #     echo unfinished
-    #     # revision=${line[1]}
-    #     # echo "$app" "$revision"
-    # done
-
-    # ////
-}
-
 function slow() {
     # default waiting time
     wait_time=0.5
@@ -134,52 +122,9 @@ function slow() {
     "$@" | awk '{system("sleep '$wait_time'");print}'
 }
 
-# function for downloading a file instantly using github
-function gitt() {
-    return
-    #check if link is a GitHub link, if not do nothing
-    # re='^(https://github.com/).*$'
-    # if ! [[ "$1" =~ $re ]]; then
-    #     echo "Invalid Link"
-    #     return
-    # fi
-
-    # #check if we are home, we'll put in downloads
-    # destination=$PWD
-    # if [ "$destination" == $HOME ]; then
-    #     destination="$PWD/Downloads/"
-    # fi
-
-    # #name of the file, same as /([^/].)*$
-    # strin='https://github.com/po5/mpv_manager/blob/master/manager.lua'
-
-    # repl1='//raw.githubusercontent'
-    # strin=${strin//'//github'/$repl1}
-
-    # repl2='/master/'
-    # strin=${strin//'/blob/master/'/$repl2}
-
-    # curl
-}
-
 function youtube-dl-numbered() {
     # runs the alias
     youtube-dl -cio "%(playlist_index)02d: %(title)s.%(ext)s" --write-sub --write-auto-sub --sub-lang en --embed-subs "$@"
-}
-
-#alias for restarting adb server and connecting to device
-function adbc() {
-    # adb="/home/sanjar/.AndroidSDK/Android/Sdk/platform-tools/adb"
-    {
-        mobile_ip_address="26.49.217.166"
-        adb kill-server
-        adb tcpip 5555
-    } &>/dev/null
-    if [[ $(adb connect "$mobile_ip_address") == *"connected to $mobile_ip_address"* ]]; then
-        echo "Success"
-    else
-        echo "Failure"
-    fi
 }
 
 function reposize() {
