@@ -69,7 +69,7 @@ alias gcm="git commit -m"
 alias gst="git status"
 
 # gh - GitHub CLI
-alias ghcc='gh browse $(git rev-parse HEAD) -cn | tr -d "\n"' # get "commit" link instead of "tree" link. 
+alias ghcc='gh browse $(git rev-parse HEAD) -cn | tr -d "\n"' # get "commit" link instead of "tree" link.
 # See: https://github.com/cli/cli/issues/6926. Also using single quotes here.
 
 # print (-s option) or navigate to Git repo root, current location or specified one
@@ -112,7 +112,7 @@ function groot {
 }
 
 # print random human-friendly name
-function namegen { 
+function namegen {
     jsCode=$(cat <<-ENDJS
         const {
             uniqueNamesGenerator,
