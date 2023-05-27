@@ -63,7 +63,7 @@ export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH" # for brew path $
 
 export HOMEBREW_NO_AUTO_UPDATE=1 # disable auto update on each run of brew
 
-# print total number of lines in files at path and all descendants
-function countLines() {
-    find "$1" -type f -exec wc -l {} + | awk '{total += $1} END{print total}'
-}
+# AndroidStudio \w React Native setup docs
+export ANDROID_SDK_ROOT=$HOME/.devTools/Android/Sdk
+export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
+export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
