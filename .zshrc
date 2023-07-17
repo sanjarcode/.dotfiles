@@ -31,13 +31,19 @@ if [ -f ~/.zprofile ]; then
     . ~/.zprofile
 fi
 
+# git highlight
 # gitify_prompt()
+custom_prompt
+
+# copy and paste - xclip/pb*
+copyAndPaste
+
 eval "$(pyenv init -)"
 
 #postgreSQL
 export PATH="/Applications/Postgres.app/Contents/Versions/13/bin:$PATH"
 
-custom_prompt
+
 
 eval "$(rbenv init -)" # rbenv, added manually
 
