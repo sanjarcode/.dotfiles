@@ -211,13 +211,13 @@ function copyAndPaste() {
         return
     fi
 
-    # if command -v pbcopy &> /dev/null
-    # then
-    #     alias c="cat | pbcopy"
-    #     alias p="pbpaste"
-    #     # echo "pbcopy exists"
-    #     return
-    # fi
+    if command -v pbcopy &> /dev/null
+    then
+        alias c="cat | pbcopy"
+        alias p="pbpaste"
+        # echo "pbcopy exists"
+        return
+    fi
 }
 
 # kill process at port
