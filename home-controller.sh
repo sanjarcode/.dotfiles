@@ -3,6 +3,8 @@
 # placed at ~/.my-scripts
 # Main commands: hc_setup, hc, hc_f, hc_l
 
+# link: https://github.com/exemplar-codes/arduino-nodemcu-board-code/tree/c4b95283333af8876ec6b76a5306003b35e42d6c/nodemcu/POST_polling_relay_control_nodemcu
+
 # discovers and prints result, or empty
 _discover_url() {
     DEBUG_MODE="" # false
