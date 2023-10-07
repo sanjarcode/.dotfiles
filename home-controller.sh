@@ -18,9 +18,9 @@ _discover_url() {
         # curl $url -m 1
 
         if [ -n "${DEBUG_MODE}" ]; then
-            curl $url -m 1
+            curl -w '\n' $url -m 1
         else
-            curl $url -m 1 >/dev/null 2>&1
+            curl -w '\n' $url -m 1 >/dev/null 2>&1
         fi
 
         if [ $? -eq 0 ]; then
@@ -52,17 +52,17 @@ hc_url() {
 hc() {
     stored_url=$(hc_url)
     echo $stored_url
-    curl $stored_url
+    curl -w '\n' $stored_url
 }
 
 hc_f() {
     url="$(hc_url)/toggle/0"
     echo $url
-    curl $url
+    curl -w '\n' $url
 }
 
 hc_l() {
     url="$(hc_url)/toggle/1"
     echo $url
-    curl $url
+    curl -w '\n' $url
 }
