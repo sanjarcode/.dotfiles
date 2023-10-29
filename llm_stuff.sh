@@ -36,7 +36,9 @@ confirm() {
 # -rw-r--r--@ 1 muhammad  staff  1372 Oct 24 19:54 llm_stuff.sh
 # -rw-r--r--@ 1 muhammad  staff   507 Oct 24 19:44 utils.sh
 
+## Use LLM to generate commands to be run in terminal
 ## `llm` set up: https://github.com/simonw/llm#installation
+## Btw, multiple responses if given by the LLM work just fine (example - bash function definition with call)
 aido() {
     # Check if a command is provided
     if [ -z "$1" ]; then
