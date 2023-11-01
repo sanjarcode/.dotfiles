@@ -45,7 +45,7 @@ Blanks_fileHasCreated_test() {
     local location="$1" # Get the directory location from the argument
     shopt -s globstar
 
-    for file in "$location"/**/*index.md; do
+    for file in "$location"/**/*.md; do
         if [[ -f $file ]]; then
             if fileHasCreated "$file"; then
                 echo "File $file has 'Created' in the second line."
@@ -60,7 +60,7 @@ Blanks_deleteFilesThatHaveCreatedTextOnly() {
     local location="$1" # Get the directory location from the argument
     shopt -s globstar
 
-    for file in "$location"/**/*index.md; do
+    for file in "$location"/**/*.md; do
         if [[ -f $file ]]; then
             if fileHasCreated "$file"; then
                 rm "$file"
