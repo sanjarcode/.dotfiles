@@ -72,3 +72,41 @@ Blanks_deleteFilesThatHaveCreatedTextOnly() {
 }
 
 # Blanks_deleteFilesThatHaveCreatedTextOnly
+
+# A function that deletes empty folders and files, recursively given location
+childDirs() {
+    local location="$1"
+    find "$location" -mindepth 1 -maxdepth 1 -type d -exec sh -c '
+        for dir do
+            if [ "$dir" != "$location/." ]; then
+                echo "$dir" | sed "s#/\$##"
+            fi
+        done' sh {} +
+}
+
+# cleanEmptyFolders .
+cleanEmptyFolders() {
+    local _location="$1"
+    local _hidden="${2}"
+
+    local dir
+    for dir in $(childDirs "$_location"); do
+        # $_hidden
+        if [[ ! $_hidden == "--hidden" && $(basename "$dir") == .* ]]; then
+            # echo "Skipping hidden folder: $dir"
+            continue # Ignoring hidden folders
+        fi
+
+        # echo "Dir: $dir"
+
+
+        # echo "Exploring: $dir"
+        cleanEmptyFolders "$dir" "$_hidden"
+
+        if [[ ! $(ls -A "$dir") ]]; then
+            # echo "After check dir: $dir"
+            rmdir "$dir"
+            # echo "Empty folder '$dir' deleted."
+        fi
+    done
+}
