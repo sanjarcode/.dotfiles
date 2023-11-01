@@ -3,7 +3,7 @@
 # Recursively process directories and move files with the same name as
 # their parent folder to be inside that folder with the name
 FilesNameAsFolder_moveFilesToFolderAsIndex() {
-    local location="$1" # Get the directory location from the argument
+    local location="${1:-$(pwd)}" # Get the directory location from the argument
     shopt -s globstar
 
     for file in "$location"/**/*.md; do
@@ -58,7 +58,7 @@ Blanks_fileHasCreated_test() {
 }
 # Blanks_deleteFilesThatHaveCreatedTextOnly path-to-location
 Blanks_deleteFilesThatHaveCreatedTextOnly() {
-    local location="$1" # Get the directory location from the argument
+    local location="${1:-$(pwd)}" # Get the directory location from the argument
     shopt -s globstar
 
     for file in "$location"/**/*.md; do
@@ -75,7 +75,7 @@ Blanks_deleteFilesThatHaveCreatedTextOnly() {
 
 # A function that deletes empty folders and files, recursively given location
 childDirs() {
-    local location="$1"
+    local location="${1:-$(pwd)}"
     find "$location" -mindepth 1 -maxdepth 1 -type d -exec sh -c '
         for dir do
             if [ "$dir" != "$location/." ]; then
@@ -84,9 +84,10 @@ childDirs() {
         done' sh {} +
 }
 
-# cleanEmptyFolders .
+# cleanEmptyFolders path
+# cleanEmptyFolders path --hidden
 cleanEmptyFolders() {
-    local _location="$1"
+    local _location="${1:-$(pwd)}"
     local _hidden="${2}"
 
     local dir
