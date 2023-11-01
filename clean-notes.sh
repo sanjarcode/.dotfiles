@@ -13,6 +13,7 @@ FilesNameAsFolder_moveFilesToFolderAsIndex() {
             filename_no_ext="${filename%.*}"
 
             if [[ -d "$dir/$filename_no_ext" ]]; then
+                echo "File $file has been moved"
                 mv "$file" "$dir/$filename_no_ext/0_index.md"
             # # for debug
             # else
