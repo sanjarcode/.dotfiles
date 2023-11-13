@@ -284,6 +284,7 @@ run_files_in_dir() {
     else
         # commented out - remains silent
         # echo "Error: Directory not found - $directory"
+        :
     fi
 }
 
