@@ -30,3 +30,23 @@ confirm() {
         esac
     done
 }
+
+## Create file at path if it doesn't exist
+## meant especially for nested paths
+## named after: `mkdir -p`
+## Usage: `touchp A/B/C/nestedFile.md`
+function touchp() {
+  local file_path=$1
+  local dir_path=$(dirname "$file_path")
+
+  if [ ! -d "$dir_path" ]; then
+    mkdir -p "$dir_path"
+  fi
+
+  touch "$file_path"
+}
+
+# show all files at and under path, one per line
+function show_files_tree() {
+  find . -type f
+}
