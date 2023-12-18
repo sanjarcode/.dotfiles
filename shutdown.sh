@@ -12,6 +12,12 @@ function startShutdownServer() {
     PORT="${PORT}" node $hc_script_path
 }
 
+function getProblematicPids() {
+    # hcpid=$(lsof -i -P -n | grep 4001 | awk '{print $2}')
+    # not needed, background jobs cannot affect shutdown
+    pgrep -i -a 'iterm|qemu' | tr '\n' ' '
+}
+
 function startShutdownServerIdempotent() {
     # Check if localhost:4001 is reachable
     isServerRunning=$(curl -sSf "http://localhost:${PORT}" > /dev/null 2>&1)
