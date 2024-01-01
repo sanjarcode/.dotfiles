@@ -50,3 +50,7 @@ function touchp() {
 function show_files_tree() {
   find . -type f
 }
+
+function ip_self_local() {
+  ifconfig 2> /dev/null | grep 'inet' | grep '192' | awk '/inet/ {print $2}'
+}
