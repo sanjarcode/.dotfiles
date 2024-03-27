@@ -274,7 +274,7 @@ alias jp="jump"
 alias mk="mark"
 alias um="unmark"
 alias mks="marks"
-alias gmk="getmark"
+alias gm="getmark"
 
 ## bookmark setup END
 
