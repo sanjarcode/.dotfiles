@@ -331,6 +331,10 @@ urldecode() {
     printf '%b' "${data//%/\x}"
 }
 
+# usage
+# obsidian path-to-vault
+# obsidian path-to-vault note_path
+# obsidian .
 obsidian() {
     value_git_based_name=$(basename $(cd $1; git root))
     value_current_dir_based_name=$(basename "$(realpath $1)")
