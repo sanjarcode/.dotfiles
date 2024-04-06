@@ -343,7 +343,7 @@ urldecode() {
 function obsidian() {
     value_git_based_name=$(basename $(cd $1; git root))
     value_current_dir_based_name=$(basename "$(realpath $1)")
-    vault_value=$([[ "$value_git_based_name" == "" ]] && echo $value_git_based_name || echo $value_current_dir_based_name)
+    vault_value=$([[ -z "$value_git_based_name" ]] && echo $value_current_dir_based_name || echo $value_git_based_name)
     file_part=$([[ -z "$2" ]] && echo "" || "&file=$(urlencode $2)")
     # echo "value_git_based_name:$value_git_based_name value_current_dir_based_name:$value_current_dir_based_name vault_value:$vault_value file_part$file_part"
     xdg-open "obsidian://open?vault=$vault_value$file_part" >/dev/null 2>&1 &
