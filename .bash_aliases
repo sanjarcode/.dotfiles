@@ -340,7 +340,8 @@ function obsidian() {
     value_current_dir_based_name=$(basename "$(realpath $1)")
     vault_value=$([[ "$valut_git_based_name" == "" ]] && echo $value_git_based_name || echo $value_current_dir_based_name)
     file_part=$([[ -z "$2" ]] && echo "" || "&file=$(urlencode $2)")
-    xdg-open "obsidian://open?vault=$vault_value$file_part"
+    # echo "value_git_based_name:$value_git_based_name value_current_dir_based_name:$value_current_dir_based_name vault_value:$vault_value file_part$file_part"
+    xdg-open "obsidian://open?vault=$vault_value$file_part" >/dev/null 2>&1 &
 }
 
 # safely add my scripts, for home-controller
