@@ -9,9 +9,10 @@
 ## 3. Install project dependencies, `npm install`
 
 # Running the script
-## Step 1: Go to your expo project.
-## Step 2: Run `build_apk` in the terminal.
-## Step 3: Log in with Expo credentials if needed, and answer the prompts (or just press enter).
+## Step 1: Run this script `source ~/path-to/MAD.sh`
+## Step 2: Go to your expo project.
+## Step 3: Run `build_apk` in the terminal.
+## Step 4: Log in with Expo credentials if needed, and answer the prompts (or just press enter).
 ## Done!
 ## APK will be generated named `build-171something.apk`
 
