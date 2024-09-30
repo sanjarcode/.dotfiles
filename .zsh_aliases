@@ -28,6 +28,8 @@ function gplo() {
     # for hands free other-than-current-branch-update, see https://stackoverflow.com/a/45622872
     # Assumption: remote and local branches have same name
     # Todo, figure out remote branch name even if different and pull, so command always succeeds
+    # suppose you are on feat/xyz
+    # gplo staging # will update the staging
     local_branch="$1"
     remote_branch="origin/$1"
 
