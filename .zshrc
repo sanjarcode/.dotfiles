@@ -37,9 +37,6 @@ if type pyenv &>/dev/null; then
     eval "$(pyenv init -)"
 fi
 
-#postgreSQL
-export PATH="/Applications/Postgres.app/Contents/Versions/13/bin:$PATH"
-
 
 if type rbenv &>/dev/null; then
     eval "$(rbenv init -)" # rbenv, added manually
@@ -125,5 +122,10 @@ custom_prompt
 
 # copy and paste - xclip/pb*
 copyAndPaste
+
+export PATH="$HOME/.cargo/bin:$PATH" # for Rust
+export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH" # postgres
+
+plugins=(git zsh-autosuggestions) # https://catalins.tech/zsh-plugins/#:~:text=2.%20Zsh--,autosuggestions%20plugin,-You%20most%20likely
 
 $(startShutdownServerIdempotent > /dev/null 2>&1 &)
