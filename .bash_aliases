@@ -3,7 +3,6 @@
 # CUSTOM Aliases #####################
 
 # git
-alias g='git'
 alias gco="git checkout"
 alias ga="git add"
 alias gunadd="git restore --staged" # Unstage path1 path2...
@@ -16,6 +15,7 @@ function gcmp() { # git commit and push
 alias gst="git status"
 alias gpp="git push"
 alias gpl="git pull"
+alias gls="git branch --sort=-committerdate" # git branch ls
 function gplo() {
     # `git pull other` branch
     # for hands free other-than-current-branch-update, see https://stackoverflow.com/a/45622872
