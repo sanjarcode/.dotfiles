@@ -68,7 +68,8 @@ export HOMEBREW_NO_AUTO_UPDATE=1 # disable auto update on each run of brew
 export ANDROID_SDK_ROOT=$HOME/.devTools/Android/Sdk
 export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
 export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
-
+export PATH=~/Library/Android/sdk/tools:$PATH
+export PATH=~/Library/Android/sdk/platform-tools:$PATH
 
 # pnpm
 export PNPM_HOME="/Users/muhammad/Library/pnpm"
