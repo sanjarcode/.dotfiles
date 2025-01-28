@@ -164,7 +164,7 @@ export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
 export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
 
 # pnpm
-export PNPM_HOME="/Users/muhammad/Library/pnpm"
+export PNPM_HOME=$HOME/Library/pnpm
 case ":$PATH:" in
 *":$PNPM_HOME:"*) ;;
 *) export PATH="$PNPM_HOME:$PATH" ;;

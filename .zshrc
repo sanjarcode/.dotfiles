@@ -72,7 +72,7 @@ export PATH=~/Library/Android/sdk/tools:$PATH
 export PATH=~/Library/Android/sdk/platform-tools:$PATH
 
 # pnpm
-export PNPM_HOME="/Users/muhammad/Library/pnpm"
+export PNPM_HOME=$HOME/Library/pnpm
 case ":$PATH:" in
 *":$PNPM_HOME:"*) ;;
 *) export PATH="$PNPM_HOME:$PATH" ;;
