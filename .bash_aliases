@@ -260,6 +260,20 @@ function copyAndPaste() {
     fi
 }
 
+function setupEditorShortcut() {
+    if command -v cursor &> /dev/null
+    then
+        alias ed="cursor"
+        return
+    fi
+
+    if command -v code &> /dev/null
+    then
+        alias ed="code"
+        return
+    fi
+}
+
 # kill process at port
 # Usage:
 # `portkill 3000`

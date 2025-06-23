@@ -211,5 +211,6 @@ custom_prompt
 
 # copy and paste - xclip/pb*
 copyAndPaste
+setupEditorShortcut
 
 $(startShutdownServerIdempotent > /dev/null 2>&1 &)

@@ -123,6 +123,7 @@ custom_prompt
 
 # copy and paste - xclip/pb*
 copyAndPaste
+setupEditorShortcut
 
 export PATH="$HOME/.cargo/bin:$PATH" # for Rust
 export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH" # postgres
