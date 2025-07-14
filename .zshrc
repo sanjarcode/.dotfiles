@@ -51,6 +51,7 @@ fi
 # Added after Rosetta 2 install
 
 # alias rbrew='/usr/local/bin/brew'
+alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew' # To fix brew doctor's warning ""config" scripts exist outside your system or Homebrew directories" (https://github.com/pyenv/pyenv#:~:text=optional.%20to%20fix%20brew%20doctor's%20warning%20%22%22config)
 # # Rosetta brew
 # % which rbrew
 alias rbrew="/usr/local/bin/brew"
@@ -131,3 +132,9 @@ export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH" # postgres
 plugins=(git zsh-autosuggestions) # https://catalins.tech/zsh-plugins/#:~:text=2.%20Zsh--,autosuggestions%20plugin,-You%20most%20likely
 
 $(startShutdownServerIdempotent > /dev/null 2>&1 &)
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/sanjar/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
+export PATH="/opt/homebrew/bin:$PATH"
