@@ -247,5 +247,5 @@ function dotfiles_check {
     ls ~/.function_declarations.sh
     ls ~/.invocations.sh
     ls ~/.zshrc
-    echo "\n Checked dot files"
+    echo "\nChecked dot files"
 }
