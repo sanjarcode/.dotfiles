@@ -238,7 +238,7 @@ function dotfiles_uninstall {
     rm ~/.function_declarations.sh
     rm ~/.invocations.sh
     rm ~/.zshrc
-    echo "All dot files removed"
+    echo "\n All dot files removed"
 }
 
 function dotfiles_check {
@@ -247,5 +247,5 @@ function dotfiles_check {
     ls ~/.function_declarations.sh
     ls ~/.invocations.sh
     ls ~/.zshrc
-    echo "Checked dot files"
+    echo "\n Checked dot files"
 }
