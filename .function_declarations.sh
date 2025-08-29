@@ -167,47 +167,6 @@ function countLines() {
     find "$1" -type f -exec wc -l {} + | awk '{total += $1} END{print total}'
 }
 
-## bookmark setup for paths, START
-## https://github.com/sanjar-notes/swe-culture-n-tools/issues/12
-## source: https://jeroenjanssens.com/navigate/
-export MARKPATH=$HOME/.marks
-function jump {
-    cd -P "$MARKPATH/$1" 2>/dev/null || echo "No such mark: $1"
-}
-function mark {
-    mkdir -p "$MARKPATH"; ln -s "$(pwd)" "$MARKPATH/$1"
-}
-function unmark {
-    rm -i "$MARKPATH/$1"
-}
-function marks {
-    \ls -l "$MARKPATH" | tail -n +2 | sed 's/  / /g' | cut -d' ' -f9- | awk -F ' -> ' '{printf "%-10s -> %s\n", $1, $2}'
-}
-function getmark {
-    echo $(realpath "$MARKPATH/$1") || echo "No such mark: $1"
-}
-function remark {
-    unmark "$1"
-    mark "$1"
-}
-
-function _completemarks {
-  reply=($(ls $MARKPATH))
-}
-
-compctl -K _completemarks jump
-compctl -K _completemarks unmark
-compctl -K _completemarks remark
-compctl -K _completemarks getmark
-
-# make shorter aliases for these
-alias jp="jump"
-alias mk="mark"
-alias um="unmark"
-alias mks="marks"
-alias gm="getmark"
-
-## bookmark setup END
 
 dot_file_setup () {
     brew install fzf zoxide pdfgrep ack
