@@ -168,6 +168,14 @@ function countLines() {
 }
 
 
+# make shorter aliases for `jump`
+
+alias jp="jump"
+alias mk="mark"
+alias um="unmark"
+alias mks="marks"
+alias gm="getmark"
+
 dot_file_setup () {
     brew install fzf zoxide pdfgrep ack
 }
