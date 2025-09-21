@@ -199,7 +199,7 @@ function nvms {
     fi
 }
 
-function dotfiles_uninstall {
+function dot_remove {
     rm ~/.terminal_tool.sh
     rm ~/.path_declarations.sh
     rm ~/.function_declarations.sh
@@ -208,11 +208,16 @@ function dotfiles_uninstall {
     echo "\n All dot files removed"
 }
 
-function dotfiles_check {
+function dot_status {
     ls ~/.terminal_tool.sh
     ls ~/.path_declarations.sh
     ls ~/.function_declarations.sh
     ls ~/.invocations.sh
     ls ~/.zshrc
     echo "\nChecked dot files"
+}
+
+function dot_refresh {
+    dot_remove
+    source ~/.dotfiles/install.sh
 }

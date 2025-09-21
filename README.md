@@ -3,7 +3,7 @@
 ```sh
 cd ~ && git clone git@gist.github.com:92aa6a164d16e51c343eed926047fb1f.git ~/.dotfiles && cd - # clone
 source ~/.dofiles/install.sh # install
-source dotfiles_uninstall # uninstall
+source dot_remove # uninstall
 ```
 
 ## What each file does
