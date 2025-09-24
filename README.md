@@ -10,5 +10,5 @@ source dot_remove # uninstall
 
 1. zshrc - just a caller
 2. terminal_tool - Oh-my-zsh
-3. Path declarations - complilers/interpreters
-4. function declaration - custom functions
+3. path_declarations - complilers/interpreters
+4. function_declarations - custom functions
