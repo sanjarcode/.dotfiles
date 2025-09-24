@@ -222,8 +222,22 @@ function dot_refresh {
     source ~/.dotfiles/install.sh
 }
 
+# debugging
+function oslog() {
+  local message="$1"
+  local title="${2:-ulog}"
 
-function call_phone() {
+  if [[ "$OSTYPE" == "darwin"* ]]; then
+    # macOS
+    osascript -e "display notification \"$message\" with title \"$title\" sound name \"Pop\""
+  else
+    # Linux/Unix - try xcowsay
+    xcowsay "$message"
+  fi
+}
+
+# dial on android
+function dial() {
   local number="$1"
   adb shell am start -a android.intent.action.CALL -d tel:"$number"
 }
