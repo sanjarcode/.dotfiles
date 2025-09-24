@@ -241,3 +241,18 @@ function dial() {
   local number="$1"
   adb shell am start -a android.intent.action.CALL -d tel:"$number"
 }
+
+# have written a simpler version using my own for now
+# function shell2http_server() {
+#     # JSON + CORS (works), http://locahost:8080/exec
+#     shell2http -cgi /exec 'echo "Access-Control-Allow-Origin: *"; echo "Content-Type: application/javascript\n"; echo "{\"message\": \"works\"}"'
+
+#     # FORM (for query params), http://locahost:8080/exec?command=ls
+#     shell2http -form /exec 'zsh -c "$v_command"'
+
+#     # json + cors + sh works
+#     shell2http -cgi /exec 'echo "Access-Control-Allow-Origin: *"; echo "Content-Type: application/javascript\n"; echo "{\"message\": \"works\"}"; zsh -c "source ~/.zshrc && oslog hello"'
+
+#     # json + cors + sh + query params
+#     shell2http -cgi /exec 'echo "Access-Control-Allow-Origin: *"; echo "Content-Type: application/javascript\n"; echo "{\"message\": \"works\"}"; zsh -c "source ~/.zshrc && $v_command"'
+# }
