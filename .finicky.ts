@@ -1,3 +1,7 @@
+// @ts-check
+
+import type { FinickyConfig } from "/Applications/Finicky.app/Contents/Resources/finicky.d.ts";
+
 // ~/.finicky.js
 export default {
   defaultBrowser: "Google Chrome",
@@ -18,11 +22,6 @@ export default {
       browser: "Comet",
     },
     {
-      // Open all bsky.app urls in Firefox
-      match: "tel:",
-      browser: "Firefox",
-    },
-    {
       // Open google.com and *.google.com urls in Google Chrome
       match: [
         "google.com/*", // match google.com urls
@@ -31,4 +30,4 @@ export default {
       browser: "Google Chrome",
     },
   ],
-};
+} satisfies FinickyConfig;
