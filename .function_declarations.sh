@@ -267,6 +267,17 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH # macports
 #     shell2http -cgi /exec 'echo "Access-Control-Allow-Origin: *"; echo "Content-Type: application/javascript\n"; echo "{\"message\": \"works\"}"; zsh -c "source ~/.zshrc && $v_command"'
 # }
 alias activate="source .venv/bin/activate" # python venv activate
+create-venv() {
+    if [ -d ".venv" ]; then
+        echo ".venv already exists. To recreate, delete the folder first."
+        return
+    fi
+    python3 -m venv .venv
+    source .venv/bin/activate
+    pip install --upgrade pip
+    echo "Virtual environment created and activated."
+}
+alias cenv="create-venv" # python venv deactivate
 
 # ---- Safe auto-naming zip override ----
 zip() {
