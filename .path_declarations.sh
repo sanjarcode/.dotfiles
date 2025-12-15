@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 
+export DOT_PATH=$HOME/.dotfiles
 export PATH="$PATH:/opt/homebrew/bin/"
 export PATH="$PATH:/opt/homebrew/lib/ruby/gems/3.0.0/bin"
 

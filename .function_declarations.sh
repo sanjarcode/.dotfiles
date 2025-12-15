@@ -272,10 +272,21 @@ create-env() {
         echo ".venv already exists. To recreate, delete the folder first."
         return
     fi
+    echo "Creating venv virtual environment..."
     python3 -m venv .venv
     source .venv/bin/activate
     pip install --upgrade pip
     echo "Virtual environment created and activated."
+}
+add-keys() {
+    echo "Installing .env from dotfiles..."
+    if [ -f "$DOT_PATH/.env" ]; then
+        cp "$DOT_PATH/.env" .env
+        echo ".env installed"
+        return
+    else
+        echo ".env not found"
+    fi
 }
 alias cenv="create-env" # python venv deactivate
 
