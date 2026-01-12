@@ -1,2 +1,3 @@
 - Prefer UI libraries like MUI, PrimeVue etc over handcoded core components
-
+- :State management: prefer Redux Toolkit
+- :CSS: prefer CSS library
